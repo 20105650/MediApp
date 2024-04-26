@@ -1,7 +1,8 @@
-package ie.setu.mediapp
+package ie.setu.mediapp.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import ie.setu.mediapp.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
