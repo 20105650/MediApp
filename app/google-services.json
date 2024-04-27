@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "216309140375",
+    "firebase_url": "https://mediapp-b5ee2-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "mediapp-b5ee2",
+    "storage_bucket": "mediapp-b5ee2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:216309140375:android:246cb1d79d9addedc292d2",
+        "android_client_info": {
+          "package_name": "ie.setu.mediapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDb4dufGYD8PY-Omz2eVjKpGK80sqFZBzY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
