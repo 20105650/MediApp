@@ -80,7 +80,7 @@ class SignInActivity : AppCompatActivity() {
     }
 
     private fun navigateToHome() {
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, PatientActivity::class.java)
         startActivity(intent)
         finish() // Optional: finish the current activity so the user can't navigate back
     }

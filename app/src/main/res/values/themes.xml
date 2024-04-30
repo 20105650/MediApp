@@ -32,4 +32,11 @@
     </style>
 
     <style name="Theme.MediApp" parent="Base.Theme.MediApp" />
+
+    <style name="Theme.MediApp.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.MediApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.MediApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
