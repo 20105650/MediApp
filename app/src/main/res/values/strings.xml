@@ -17,5 +17,6 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello patient fragment</string>
     <string name="hello_admin_fragment">Hello ADMIN fragment</string>
+    <string name="hello_dr_fragment">Hello Doctor fragment</string>
 
 </resources>

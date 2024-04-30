@@ -218,7 +218,7 @@ class SignUpActivity : AppCompatActivity() {
         finish() // Optional: finish the current activity so the user can't navigate back
     }
     private fun navigateToDRHome() {
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, DrActivity::class.java)
         startActivity(intent)
         finish() // Optional: finish the current activity so the user can't navigate back
     }
