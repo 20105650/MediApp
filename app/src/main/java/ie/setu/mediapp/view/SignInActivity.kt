@@ -90,7 +90,7 @@ class SignInActivity : AppCompatActivity() {
         finish() // Optional: finish the current activity so the user can't navigate back
     }
     private fun navigateToAdminHome() {
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, AdminActivity::class.java)
         startActivity(intent)
         finish() // Optional: finish the current activity so the user can't navigate back
     }
