@@ -13,6 +13,9 @@
         android:theme="@style/Theme.MediApp"
         tools:targetApi="31">
         <activity
+            android:name=".view.CategoryActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.DrActivity"
             android:exported="false" />
         <activity
