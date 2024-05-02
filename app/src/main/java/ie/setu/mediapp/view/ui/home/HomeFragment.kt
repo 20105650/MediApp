@@ -9,10 +9,11 @@ import android.view.ViewGroup
 import ie.setu.mediapp.R
 import androidx.lifecycle.ViewModelProvider
 import ie.setu.mediapp.view.CategoryActivity
-//import ie.setu.mediapp.view.ReportListActivity
+import ie.setu.mediapp.view.ReportListActivity
 import ie.setu.mediapp.view.SlotActivity
 import ie.setu.mediapp.view.UsersListActivity
 import ie.setu.mediapp.databinding.FragmentHomeBinding
+import ie.setu.mediapp.view.BookingListActivity
 
 /**
  * A simple [Fragment] subclass.
@@ -52,13 +53,13 @@ class HomeFragment : Fragment() {
         }
 
         binding.reportButton.setOnClickListener {
-          //  val intent = Intent(activity, ReportListActivity::class.java)
-          //  startActivity(intent)
+            val intent = Intent(activity, ReportListActivity::class.java)
+            startActivity(intent)
         }
 
         binding.bookingButton.setOnClickListener {
-          //  val intent = Intent(activity, BookingListActivity::class.java)
-          //  startActivity(intent)
+            val intent = Intent(activity, BookingListActivity::class.java)
+            startActivity(intent)
         }
         binding.usersButton.setOnClickListener {
             val intent = Intent(activity, UsersListActivity::class.java)
