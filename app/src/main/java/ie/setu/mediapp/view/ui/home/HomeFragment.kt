@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import ie.setu.mediapp.view.CategoryActivity
 //import ie.setu.mediapp.view.ReportListActivity
 //import ie.setu.mediapp.view.SlotActivity
-//import ie.setu.mediapp.view.UsersListActivity
+import ie.setu.mediapp.view.UsersListActivity
 import ie.setu.mediapp.databinding.FragmentHomeBinding
 
 /**
@@ -61,8 +61,8 @@ class HomeFragment : Fragment() {
           //  startActivity(intent)
         }
         binding.usersButton.setOnClickListener {
-           // val intent = Intent(activity, UsersListActivity::class.java)
-           // startActivity(intent)
+            val intent = Intent(activity, UsersListActivity::class.java)
+            startActivity(intent)
         }
 
         return root
