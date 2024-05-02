@@ -10,7 +10,7 @@ import ie.setu.mediapp.R
 import androidx.lifecycle.ViewModelProvider
 import ie.setu.mediapp.view.CategoryActivity
 //import ie.setu.mediapp.view.ReportListActivity
-//import ie.setu.mediapp.view.SlotActivity
+import ie.setu.mediapp.view.SlotActivity
 import ie.setu.mediapp.view.UsersListActivity
 import ie.setu.mediapp.databinding.FragmentHomeBinding
 
@@ -47,8 +47,8 @@ class HomeFragment : Fragment() {
         }
 
         binding.slotButton.setOnClickListener {
-          //  val intent = Intent(activity, SlotActivity::class.java)
-          //  startActivity(intent)
+            val intent = Intent(activity, SlotActivity::class.java)
+            startActivity(intent)
         }
 
         binding.reportButton.setOnClickListener {
