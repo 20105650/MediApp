@@ -12,13 +12,13 @@
         tools:layout="@layout/fragment_home_patient" />
 
  <fragment
-        android:id="@+id/nav_gallery"
-        android:name="ie.setu.mediapp.view.ui.homePatient.HomePatientFragment"
+        android:id="@+id/nav_mybookings"
+        android:name="ie.setu.mediapp.view.ui.bookings.PatientBookingListFragment"
         android:label="My Bookings"
         tools:layout="@layout/fragment_home_patient" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
+        android:id="@+id/nav_myreports"
         android:name="ie.setu.mediapp.view.ui.homePatient.HomePatientFragment"
         android:label="Report"
         tools:layout="@layout/fragment_home_patient" />
