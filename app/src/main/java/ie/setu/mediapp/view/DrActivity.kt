@@ -16,6 +16,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
+import com.bumptech.glide.Glide
 import ie.setu.mediapp.databinding.ActivityDrBinding
 
 class DrActivity : AppCompatActivity() {
@@ -39,7 +40,7 @@ class DrActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_dr)
 
         appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.nav_sign_out),
+            setOf(R.id.nav_home, R.id.nav_mybookings, R.id.nav_myreports, R.id.nav_sign_out),
             drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -56,7 +57,7 @@ class DrActivity : AppCompatActivity() {
                 }
                 R.id.nav_profile -> {
                     // Handle profile option
-                    val intent = Intent(this, MainActivity::class.java)
+                    val intent = Intent(this, ProfileActivity::class.java)
                     startActivity(intent)
                     true // Return true to indicate the event has been handled
                 }
@@ -110,13 +111,13 @@ class DrActivity : AppCompatActivity() {
         emailTextView.text = email
         val imageUrl = sharedPreferences.getString("image", "no_url").toString()
         if (imageUrl != "no_url" && imageUrl != "") {
-         /*   Glide.with(profileImg.context)
+           Glide.with(profileImg.context)
                 .load(imageUrl)
-                .into(profileImg) */
+                .into(profileImg)
         }
 
         profileImg.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
         }
     }

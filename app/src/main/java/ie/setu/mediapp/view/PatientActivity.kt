@@ -17,6 +17,8 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.bumptech.glide.Glide
+
 //import com.bumptech.glide.Glide
 
 class PatientActivity : AppCompatActivity() {
@@ -40,7 +42,7 @@ class PatientActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_patient)
 
         appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.nav_sign_out),
+            setOf(R.id.nav_home, R.id.nav_mybookings, R.id.nav_myreports, R.id.nav_sign_out),
             drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -57,7 +59,7 @@ class PatientActivity : AppCompatActivity() {
                 }
                 R.id.nav_profile -> {
                     // Handle profile option
-                    val intent = Intent(this, MainActivity::class.java)
+                    val intent = Intent(this, ProfileActivity::class.java)
                     startActivity(intent)
                     true // Return true to indicate the event has been handled
                 }
@@ -111,14 +113,14 @@ class PatientActivity : AppCompatActivity() {
         emailTextView.text = email
         val imageUrl = sharedPreferences.getString("image", "no_url").toString()
         if (imageUrl != "no_url" && imageUrl != "") {
-          //  Glide.with(profileImg.context)
-            //    .load(imageUrl)
-           //     .into(profileImg)
+            Glide.with(profileImg.context)
+               .load(imageUrl)
+               .into(profileImg)
         }
 
         profileImg.setOnClickListener {
-           // val intent = Intent(this, ProfileActivity::class.java)
-         //   startActivity(intent)
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
         }
 
     }
