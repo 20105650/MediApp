@@ -1,6 +1,7 @@
 package ie.setu.mediapp.view
 
 import android.content.Intent
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import androidx.activity.viewModels
 import android.os.Bundle
@@ -8,6 +9,13 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
 import ie.setu.mediapp.R
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.SignInButton
+import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.tasks.Task
 import ie.setu.mediapp.databinding.ActivitySignUpBinding
 import androidx.core.view.isVisible
 import ie.setu.mediapp.ViewModels.SignInActivityVM
@@ -18,6 +26,8 @@ class SignUpActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignUpBinding
     private val viewModel: SignInActivityVM by viewModels()
     private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var googleSignInClient: GoogleSignInClient
+    private val RC_SIGN_IN = 9001
     var userType = 0
     var loginType = 0
     var cat_value = ""
@@ -39,7 +49,14 @@ class SignUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        sharedPreferences = getSharedPreferences("auth_pref", Context.MODE_PRIVATE)
 
+        ////GOOGLE LOGIN
+        configureGoogleSignIn()
+        val signInButton = findViewById<SignInButton>(R.id.sign_in_button)
+        signInButton.setOnClickListener {
+            signIn()
+        }
 
         //Login link click action
         binding.signinTextView.setOnClickListener {
@@ -226,6 +243,20 @@ class SignUpActivity : AppCompatActivity() {
         val intent = Intent(this, AdminActivity::class.java)
         startActivity(intent)
         finish() // Optional: finish the current activity so the user can't navigate back
+    }
+
+    ////GOOGLE LOGIN
+    private fun configureGoogleSignIn() {
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+
+        googleSignInClient = GoogleSignIn.getClient(this, gso)
+    }
+    private fun signIn() {
+        val signInIntent = googleSignInClient.signInIntent
+        startActivityForResult(signInIntent, RC_SIGN_IN)
     }
 
 
