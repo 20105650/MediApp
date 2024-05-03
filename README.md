@@ -1,10 +1,10 @@
 Medicare is a mobile app with three types of users. Patients, Doctors, and an Admin. It has the functionalities like registration, login, profile update, appointment booking, etc. Firebase Realtime Database is used as database and Firebase cloud storage is used for storing images.
-1.1 Third Party APIs Used
+Third Party APIs Used
 Realtime Database is used to store data. The Firebase Realtime Database is a database stored in the cloud. Every connected client receives real-time data synchronization in JSON format.
 
 Cloud Storage for Firebase is designed for app developers who need to store and serve user-generated material, such images or videos, and is based on quick and secure Google Cloud infrastructure. It is used to store image here.
 
-1.2 APP Features
+APP Features
 
 Splash Screen Medicare is launching with a splash screen with a logo and a small text. 
 Login Page  After a specific interval splash screen redirects to the Login page. From there a user can login to app or redirect to the signup page.
