@@ -150,14 +150,33 @@
             app:boxStrokeColor="@color/yellow"
             app:hintTextColor="@color/yellow"
             android:layout_margin="1dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/catEt"
-                style="@style/LoginTextInputInnerFieldStyle"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Select your Category"
-                android:inputType="textPersonName" />
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spin_value"
+                    android:text="Choose your category : "
+                    android:textColor="@color/black"/>
+                <Spinner
+                    android:id="@+id/mySpinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:spinnerMode="dialog"
+                    android:textColor="@color/black"
+                    />
+
+                <!--            <com.google.android.material.textfield.TextInputEditText-->
+                <!--                android:id="@+id/catEt"-->
+                <!--                style="@style/LoginTextInputInnerFieldStyle"-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:hint="Select your Category"-->
+                <!--                android:inputType="textPersonName" />-->
+            </LinearLayout>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout

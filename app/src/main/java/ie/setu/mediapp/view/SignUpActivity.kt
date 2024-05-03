@@ -4,6 +4,8 @@ import android.content.Intent
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import androidx.activity.viewModels
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.os.Bundle
 import android.widget.RadioButton
 import android.widget.RadioGroup
@@ -18,20 +20,31 @@ import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 import ie.setu.mediapp.databinding.ActivitySignUpBinding
 import androidx.core.view.isVisible
+import ie.setu.mediapp.Model.Category
+import ie.setu.mediapp.Model.CategoryList
 import ie.setu.mediapp.ViewModels.SignInActivityVM
 import android.content.SharedPreferences
+import android.view.View
+import android.widget.Spinner
+import ie.setu.mediapp.ViewModels.CategoryActivityVM
 
 class SignUpActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySignUpBinding
     private val viewModel: SignInActivityVM by viewModels()
+    private val catviewModel: CategoryActivityVM by viewModels()
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var googleSignInClient: GoogleSignInClient
     private val RC_SIGN_IN = 9001
     var userType = 0
     var loginType = 0
+    val categoryList = mutableListOf<CategoryList>()
     var cat_value = ""
     var cat_value_id = ""
+
+
+    val catSpinArray = ArrayList<String>()
+    private lateinit var adapter: ArrayAdapter<String>
 
     data class User(
         val id: String = "",
@@ -140,7 +153,67 @@ class SignUpActivity : AppCompatActivity() {
             }
         }  //Signup button onclick action -- Ends here
 
+        // Find the Spinner by its ID
+        val spinner: Spinner = findViewById(R.id.mySpinner)
+
+        // Create an ArrayAdapter
+        adapter = ArrayAdapter(
+            this,
+            android.R.layout.simple_spinner_item,
+            catSpinArray
+        )
+        // Set the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        // Apply the adapter to the Spinner
+        spinner.adapter = adapter
+
+        // Optionally, you can set an item selected listener
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                // Handle the selected item
+                val selectedItem = parent.getItemAtPosition(position).toString()
+
+                cat_value_id = categoryList[position].catId
+                cat_value = categoryList[position].catName
+                println("SANTHOSH Selected item: $selectedItem")
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                // Handle no item selected case
+            }
+        }
+
+        getAllCategories()
+
+
+
     }//onCreate -- Ends here
+
+
+    private fun getAllCategories() {
+        catviewModel.getCategories { categories ->
+            if (categories != null) {
+                // Successfully retrieved categories
+                categoryList.removeAll(categoryList)
+                categoryList.addAll(categories)
+                catSpinArray.removeAll(catSpinArray)
+                for (categorySnapshot in categories) {
+                    catSpinArray.add(categorySnapshot.catName)
+                }
+                adapter.notifyDataSetChanged()
+                //adapter.notifyDataSetChanged()
+            } else {
+                // Failed to retrieve categories
+                println("Failed to retrieve categories")
+            }
+        }
+    }
 
 
     // signup Ui updation basedon radio button change
